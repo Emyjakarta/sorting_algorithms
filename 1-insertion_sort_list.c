@@ -41,7 +41,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *present = *list;/*present node being inserted*/
 	listint_t *prev = NULL;/*previous node to be inserted*/
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (list == NULL || (*list)->next == NULL)
 		return;
 	while (present != NULL)
 	{
