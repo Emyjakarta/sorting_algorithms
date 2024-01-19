@@ -5,29 +5,21 @@
  * @node1: first node to be swapped
  * @node2: second node to be swapped
  */
-void switch_nodes(listint_t **list, listint_t *node1, listint_t *node2)
+void switch_nodes(listint_t **list, listint_t **node1, listint_t *node2)
 {
-	listint_t *prev1 = NULL, *next2 = NULL;
+	(*node1)->next = node2->next;
+	if (node2->next != NULL)
+		node2->next->prev = *node1;
+	node2->prev = (*node1)->prev;
+	node2->next = *node1;
 
-	if (node1 == NULL || node2 == NULL)
-	{
-		return;
-	}
-	prev1 = node1->prev;
-	next2 = node2->next;
-
-	if (prev1)/*checks if node 1 is the head node*/
-		prev1->next = node2;
-	if (next2)/*checks if node 2 is the head node*/
-		next2->prev = node1;
-
-	node1->next = next2;
-	node1->prev = node2;
-	node2->next = node1;
-	node2->prev = prev1;
-
-	if (prev1 == NULL)
+	if ((*node1)->prev != NULL)
+		(*node1)->prev->next = node2;
+	else
 		*list = node2;
+	(*node1)->prev = node2;
+	*node1 = node2->prev;
+
 }
 /**
  * insertion_sort_list-function that sorts
@@ -37,21 +29,18 @@ void switch_nodes(listint_t **list, listint_t *node1, listint_t *node2)
  */
 void insertion_sort_list(listint_t **list)
 {
+	listint_t *i = NULL, *new = NULL, *temp = NULL;
 
-	listint_t *present = *list;/*present node being inserted*/
-	listint_t *prev = NULL;/*previous node to be inserted*/
-
-	if (list == NULL || (*list)->next == NULL)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
-	while (present)
+	for (i = (*list)->next; i != NULL; i = temp)
 	{
-		prev = present->prev;
-		while (prev && prev->n > present->n)
+		temp = i->next;
+		new = i->prev;
+		while (new != NULL && i->n < new->n)
 		{
-			switch_nodes(list, prev, present);
+			switch_nodes(list, &new, i);
 			print_list(*list);
-			prev = present->prev;
 		}
-		present = present->next;
 	}
 }
