@@ -1,4 +1,18 @@
 #include "sort.h"
+#include "sort.h"
+/**
+ * switch_ints-swap two integers in an array
+ * @i: first integer to be swapped
+ * @j: second integer to be swapped
+ */
+void switch_ints(int *i, int *j)
+{
+	int temp = 0;
+
+	temp = *i;
+	*i = *j;
+	*j = temp;
+}
 /**
  * lomuto_partition-order a subset of an array of integers
  * according to lomuto partition scheme
