@@ -38,10 +38,8 @@ void switch_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 void insertion_sort_list(listint_t **list)
 {
 
-	/*listint_t *sorted = NULL;*//*sorted list*/
-	listint_t *present = *list;/*present node being inserted*/ 
+	listint_t *present = *list;/*present node being inserted*/
 	listint_t *prev = NULL;/*previous node to be inserted*/
-	/*listint_t *temp = NULL;*//*temporary node*/
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 		return;
