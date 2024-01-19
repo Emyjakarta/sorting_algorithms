@@ -1,6 +1,6 @@
 #include "sort.h"
 /**
- * lomuto_partition-order a subset of an array of integers 
+ * lomuto_partition-order a subset of an array of integers
  * according to lomuto partition scheme
  * @array: array of integers
  * @size: size of array
@@ -13,7 +13,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 	int *pivot, up, down;
 
 	pivot = array + right;
-	for (up = down = left; down < right; down ++)
+	for (up = down = left; down < right; down++)
 	{
 		if (array[down] < *pivot)
 		{
