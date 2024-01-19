@@ -16,9 +16,9 @@ void switch_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 	prev1 = node1->prev;
 	next2 = node2->next;
 
-	if (prev1 != NULL)/*checks if node 1 is the head node*/
+	if (prev1)/*checks if node 1 is the head node*/
 		prev1->next = node2;
-	if (next2 != NULL)/*checks if node 2 is the head node*/
+	if (next2)/*checks if node 2 is the head node*/
 		next2->prev = node1;
 
 	node1->next = next2;
@@ -43,7 +43,7 @@ void insertion_sort_list(listint_t **list)
 
 	if (list == NULL || (*list)->next == NULL)
 		return;
-	while (present != NULL)
+	while (present)
 	{
 		prev = present->prev;
 		while (prev && prev->n > present->n)
