@@ -45,7 +45,8 @@ void lomuto_sort(int *array, size_t size, int left, int right);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void switch_node_ahead(listint_t **list, listint_t **tail, listint_t **shaker);
-void switch_node_behind(listint_t **list, listint_t **tail, listint_t **shaker);
+void switch_node_behind(listint_t **list, listint_t **tail,
+		listint_t **shaker);
 void cocktail_sort_list(listint_t **list);
 
 #endif /*SORT_H*/
